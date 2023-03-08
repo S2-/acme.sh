@@ -5,12 +5,11 @@
 #returns 0 means success, otherwise error.
 
 #Author: Simon Santoro
-#Report Bugs here: https://github.com/acmesh-official/acme.sh
-# or here... https://github.com/acmesh-official/acme.sh/issues/2851
+#Report Bugs here: https://github.com/S2-/acme.sh/issues
 #
 ########  Public functions #####################
 
-# Export 1984HOSTING username and password in following variables
+# Export 1984HOSTING api key
 #
 #  One984HOSTING_ApiKey=<Api Key>
 
@@ -44,7 +43,7 @@ dns_1984hosting_add() {
     _err "1984Hosting failed to add TXT record for $fulldomain. Check $HTTP_HEADER file"
     return 1
   elif _contains "$response" '"ok": false'; then
-    _err "1984Hosting failed to add TXT record for $fulldomain. Invalid or expired cookie"
+    _err "1984Hosting failed to add TXT record for $fulldomain."
     return 1
   fi
 
@@ -67,7 +66,7 @@ dns_1984hosting_rm() {
     return 1
   fi
 
-  _info "Not deleted acme challenge TXT record for $fulldomain at 1984Hosting because not yet implemented"
+  _info "acme challenge TXT record for $fulldomain at 1984Hosting NOT deleted because not yet implemented"
   return 0
 }
 
